@@ -4,6 +4,7 @@ import com.cartify.modal.SubscriptionPlan;
 import com.cartify.repository.SubscriptionPlanRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,9 +14,19 @@ import java.util.List;
 public class SubscriptionPlanSeeder implements CommandLineRunner {
 
     private final SubscriptionPlanRepository planRepository;
+    private final JdbcTemplate jdbcTemplate;
 
     @Override
     public void run(String... args) {
+        jdbcTemplate.execute("""
+                CREATE TABLE IF NOT EXISTS subscription_plan_extra_features (
+                    plan_id BIGINT NOT NULL,
+                    feature VARCHAR(255),
+                    CONSTRAINT fk_subscription_plan_extra_features_plan
+                        FOREIGN KEY (plan_id) REFERENCES subscription_plans(id)
+                )
+                """);
+
                 if (planRepository.count() > 0) {
                         planRepository.findAll().stream()
                                         .filter(plan -> "Basic".equalsIgnoreCase(plan.getName()))
