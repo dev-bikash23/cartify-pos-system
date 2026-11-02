@@ -16,6 +16,14 @@ public class UserDto {
 
     private String phone;
 
+    private String businessName;
+
+    private String businessType;
+
+    private String businessAddress;
+
+    private String businessWebsite;
+
     private String profilePicture;
 
     private UserRole role;

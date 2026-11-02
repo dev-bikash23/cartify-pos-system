@@ -19,6 +19,7 @@ import com.cartify.repository.ProductRepository;
 import com.cartify.service.UserService;
 import com.cartify.service.OrderPricingCalculator;
 import com.razorpay.RazorpayClient;
+import com.razorpay.RazorpayException;
 import com.razorpay.Utils;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -89,7 +90,19 @@ public class RazorpayPaymentService {
                 .put("amount", amountInPaise)
                 .put("currency", "INR")
                 .put("receipt", "pos-" + UUID.randomUUID());
-        com.razorpay.Order gatewayOrder = new RazorpayClient(keyId, keySecret).orders.create(gatewayRequest);
+        final com.razorpay.Order gatewayOrder;
+        try {
+            gatewayOrder = new RazorpayClient(keyId.trim(), keySecret.trim()).orders.create(gatewayRequest);
+        } catch (RazorpayException exception) {
+            if (exception.getMessage() != null
+                    && exception.getMessage().toLowerCase().contains("authentication failed")) {
+                throw new ResponseStatusException(
+                        HttpStatus.BAD_GATEWAY,
+                        "Razorpay rejected the configured credentials. Use a matching Razorpay test key and secret."
+                );
+            }
+            throw exception;
+        }
 
         Order order = Order.builder()
                 .branch(branch)

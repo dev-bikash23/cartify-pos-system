@@ -33,7 +33,7 @@ const Transactions = () => {
     id: order.id,
     date: order.date ?? order.createdAt ?? "-",
     customer: order.customer?.fullName ?? order.customer?.name ?? order.customerName ?? "Walk-in customer",
-    cashier: order.cashier?.name ?? order.cashierName ?? order.cashierId ?? "-",
+    cashier: order.cashier?.fullName ?? order.cashier?.name ?? order.cashier?.email ?? order.cashierName ?? order.cashierId ?? "-",
     payment: order.payment ?? order.paymentType ?? "-",
     amount: Number(order.amount ?? order.totalAmount ?? 0),
     status: order.status ?? "PENDING",

@@ -21,7 +21,7 @@ const OrderHistory = () => {
   const [showOrderInvoiceDialog, setShowOrderInvoiceDialog] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeFilter, setActiveFilter] = useState("today");
+  const [activeFilter, setActiveFilter] = useState("all");
   const [customStartDate, setCustomStartDate] = useState("");
   const [customEndDate, setCustomEndDate] = useState("");
 
@@ -59,6 +59,10 @@ const OrderHistory = () => {
 
     const today = new Date();
     const todayKey = toLocalDateKey(today);
+
+    if (activeFilter === "all") {
+      return true;
+    }
 
     if (activeFilter === "today") {
       return orderDateKey === todayKey;
@@ -190,6 +194,12 @@ const OrderHistory = () => {
             />
           </div>
 
+          <Button
+            variant={activeFilter === "all" ? "default" : "outline"}
+            onClick={() => setActiveFilter("all")}
+          >
+            All
+          </Button>
           <Button
             className={activeFilter === "today" ? "bg-green-700 hover:bg-green-800" : ""}
             variant={activeFilter === "today" ? "default" : "outline"}

@@ -52,6 +52,14 @@ public class User {
 
     private String phone;
 
+    private String businessName;
+
+    private String businessType;
+
+    private String businessAddress;
+
+    private String businessWebsite;
+
     @Lob
     @Column(columnDefinition = "LONGTEXT")
     private String profilePicture;

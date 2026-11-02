@@ -10,6 +10,8 @@ import {
   Settings,
   Store,
   LayoutDashboard,
+  UserRound,
+  Users,
 } from "lucide-react";
 
 
@@ -43,6 +45,16 @@ const navLinks = [
     name: "Settings",
     path: "/super-admin/settings",
     icon: <Settings className="w-5 h-5" />,
+  },
+  {
+    name: "Profile",
+    path: "/super-admin/profile",
+    icon: <UserRound className="w-5 h-5" />,
+  },
+  {
+    name: "Users",
+    path: "/super-admin/users",
+    icon: <Users className="w-5 h-5" />,
   },
 ];
 

@@ -10,6 +10,7 @@ import StoreAlerts from '@/pages/store/Alerts/StoreAlerts'
 import StoreSales from '@/pages/store/Sales/StoreSales'
 import StoreReports from '@/pages/store/Reports/StoreReports'
 import StoreSettings from '@/pages/store/Settings/StoreSettings'
+import Profile from '@/pages/superAdmin/Profile'
 
 import React from 'react'
 
@@ -31,6 +32,7 @@ const StoreRoutes = () => {
     <Route path="reports" element={<StoreReports />} />
      <Route path="upgrade" element={<Upgrade />} />
     <Route path="settings" element={<StoreSettings />} />
+    <Route path="profile" element={<Profile />} />
     
 
      </Route>

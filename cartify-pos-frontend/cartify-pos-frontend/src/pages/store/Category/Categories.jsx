@@ -40,6 +40,7 @@ const Categories = () => {
 
   // Add Category
   const handleAddCategory = async (values) => {
+    if (!store?.id) return;
     const result = await dispatch(createCategory({
       dto: { name: values.name, description: values.description, storeId: store.id },
     }));
@@ -96,7 +97,7 @@ const Categories = () => {
         </Button>
         <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="bg-green-600 hover:bg-green-700 w-full sm:w-auto">
+            <Button className="bg-green-600 hover:bg-green-700 w-full sm:w-auto" disabled={!store?.id}>
               <Plus className="mr-2 h-4 w-4" />
               Add Category
             </Button>

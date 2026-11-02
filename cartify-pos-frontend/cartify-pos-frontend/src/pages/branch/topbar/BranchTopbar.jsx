@@ -1,12 +1,14 @@
 import React from "react";
-import { Bell, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { User } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux'
+import NotificationPopover from "@/components/NotificationPopover";
 
 const BranchTopbar = () => {
   const { userProfile } = useSelector((state) => state.user);
   
   const {branch}=useSelector(state=>state.branch)
+  const notifications = branch?.id ? [`Branch ${branch.name || "operations"} dashboard is active.`] : [];
   return (
     <header className="h-16 bg-white border-b flex items-center justify-between px-6">
 
@@ -29,38 +31,27 @@ const BranchTopbar = () => {
 
       <div className="flex items-center gap-5">
 
-        <Button
-          variant="ghost"
-          size="icon"
-          className="relative rounded-full"
-        >
-          <Bell size={20} />
+        <NotificationPopover items={notifications} label="Branch notifications" />
 
-          <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500"></span>
+        <Link to="/branch/profile" className="flex h-10 items-center gap-3 rounded-lg px-1 hover:bg-gray-50">
 
-        </Button>
+          <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-green-100 flex items-center justify-center">
 
-        <div className="flex items-center gap-3">
-
-          <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
-
-            <User className="text-green-600" size={20} />
+            {userProfile?.profilePicture ? <img src={userProfile.profilePicture} alt="" className="h-full w-full rounded-full object-cover" /> : <User className="text-green-600" size={20} />}
 
           </div>
 
           <div>
 
             <p className="font-medium">
-              {userProfile.fullName}
+              {userProfile?.fullName || "—"}
             </p>
 
             <p className="text-xs text-gray-500">
-              {userProfile.email}
+              {userProfile?.email || "—"}
             </p>
-
           </div>
-
-        </div>
+        </Link>
 
       </div>
 

@@ -12,27 +12,23 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUserProfile } from "./Redux Toolkit/features/User/userThunk";
 import { useSelector } from "react-redux";
+import { applyGlobalTheme } from "./components/ThemeSelector";
 
 function App() {
    const dispatch = useDispatch();
-   const { userProfile, loading } = useSelector((state) => state.user);
+   const { userProfile, profileLoading } = useSelector((state) => state.user);
 
    useEffect(() => {
-    const applyTheme = (theme) => {
-      const selectedTheme = theme || "light";
-      document.documentElement.classList.toggle("dark", selectedTheme === "dark");
-      document.documentElement.dataset.theme = selectedTheme;
-    };
-
     try {
-      const savedSettings = JSON.parse(localStorage.getItem("cartify-store-settings") || "null");
-      applyTheme(savedSettings?.theme || "light");
+      const globalSettings = JSON.parse(localStorage.getItem("cartify-global-settings") || "null");
+      const legacySettings = JSON.parse(localStorage.getItem("cartify-store-settings") || "null");
+      applyGlobalTheme(globalSettings?.theme || legacySettings?.theme || "light");
     } catch {
-      applyTheme("light");
+      applyGlobalTheme("light");
     }
 
     const handleSettingsUpdate = (event) => {
-      applyTheme(event.detail?.theme || "light");
+      applyGlobalTheme(event.detail?.theme || "light");
     };
 
     window.addEventListener("cartify-settings-updated", handleSettingsUpdate);
@@ -47,7 +43,7 @@ function App() {
     }
   }, [dispatch]);
 
-  if (loading) {
+  if (profileLoading) {
     return null;
   }
 

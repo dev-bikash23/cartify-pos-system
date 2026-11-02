@@ -9,6 +9,7 @@ import Settings from '@/pages/branch/Settings/Settings'
 import Transactions from '@/pages/branch/Transaction/Transactions'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import Profile from '@/pages/superAdmin/Profile'
 
 const BranchRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const BranchRoutes = () => {
      <Route path="customers" element={<Customers />} />
      <Route path="reports" element={<Reports />} />
      <Route path="settings" element={<Settings />} />
+     <Route path="profile" element={<Profile />} />
 
      </Route>
    </Routes>

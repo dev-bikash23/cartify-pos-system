@@ -57,6 +57,17 @@ public class StoreServiceImpl implements StoreService {
             store = storeRepository.findByStoreAdminId(currentUser.getId());
         }
 
+        if (store == null && currentUser.getRole() == com.cartify.domain.UserRole.ROLE_STORE_ADMIN
+                && currentUser.getBusinessName() != null
+                && !currentUser.getBusinessName().isBlank()) {
+            store = new Store();
+            store.setBrand(currentUser.getBusinessName().trim());
+            store.setStoreType(currentUser.getBusinessType());
+            store.setDescription(currentUser.getBusinessAddress());
+            store.setStoreAdmin(currentUser);
+            store = storeRepository.save(store);
+        }
+
         if (store == null) {
             throw new UserException("No store is associated with this account");
         }

@@ -136,7 +136,12 @@ const PaymentDialog = ({ showPaymentDialog, setShowPaymentDialog }) => {
       checkoutOpened = true;
       razorpay.open();
     } catch (error) {
-      toast.error(error || "Could not start payment");
+      const message = typeof error === "string" ? error : error?.message;
+      if (message?.toLowerCase().includes("razorpay") || message?.toLowerCase().includes("configure")) {
+        toast.error("Card and UPI payments are not configured. Ask an administrator to add Razorpay test credentials, or select Cash.");
+      } else {
+        toast.error(message || "Could not start payment");
+      }
     } finally {
       if (!checkoutOpened) setIsProcessing(false);
     }

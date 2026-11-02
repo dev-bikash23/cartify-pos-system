@@ -5,9 +5,11 @@ import com.cartify.domain.UserRole;
 import com.cartify.exception.UserException;
 import com.cartify.mapper.UserMapper;
 import com.cartify.modal.User;
+import com.cartify.modal.Store;
 import com.cartify.payload.dto.UserDto;
 import com.cartify.payload.response.AuthResponse;
 import com.cartify.repository.UserRepository;
+import com.cartify.repository.StoreRepository;
 import com.cartify.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,6 +31,7 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
     private final CustomUserImplementation customUserImplementation;
+    private final StoreRepository storeRepository;
 
 
     @Override
@@ -46,10 +49,24 @@ public class AuthServiceImpl implements AuthService {
         newUser.setRole(userDto.getRole());
         newUser.setFullName(userDto.getFullName());
         newUser.setPhone(userDto.getPhone());
+        newUser.setBusinessName(userDto.getBusinessName());
+        newUser.setBusinessType(userDto.getBusinessType());
+        newUser.setBusinessAddress(userDto.getBusinessAddress());
+        newUser.setBusinessWebsite(userDto.getBusinessWebsite());
         newUser.setLastLogin(LocalDateTime.now());
         newUser.setCreatedAt(LocalDateTime.now());
 
       User savedUser = userRepository.save(newUser);
+        if (userDto.getRole() == UserRole.ROLE_STORE_ADMIN
+                && userDto.getBusinessName() != null
+                && !userDto.getBusinessName().isBlank()) {
+            Store store = new Store();
+            store.setBrand(userDto.getBusinessName().trim());
+            store.setStoreType(userDto.getBusinessType());
+            store.setDescription(userDto.getBusinessAddress());
+            store.setStoreAdmin(savedUser);
+            storeRepository.save(store);
+        }
 
         UserDetails userDetails =
                 customUserImplementation.loadUserByUsername(userDto.getEmail());
@@ -124,9 +141,27 @@ public class AuthServiceImpl implements AuthService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UserException("User not found"));
 
-        user.setFullName(userDto.getFullName());
-        user.setEmail(userDto.getEmail());
-        user.setPhone(userDto.getPhone());
+        if (userDto.getFullName() != null) {
+            user.setFullName(userDto.getFullName());
+        }
+        if (userDto.getEmail() != null) {
+            user.setEmail(userDto.getEmail());
+        }
+        if (userDto.getPhone() != null) {
+            user.setPhone(userDto.getPhone());
+        }
+        if (userDto.getBusinessName() != null) {
+            user.setBusinessName(userDto.getBusinessName());
+        }
+        if (userDto.getBusinessType() != null) {
+            user.setBusinessType(userDto.getBusinessType());
+        }
+        if (userDto.getBusinessAddress() != null) {
+            user.setBusinessAddress(userDto.getBusinessAddress());
+        }
+        if (userDto.getBusinessWebsite() != null) {
+            user.setBusinessWebsite(userDto.getBusinessWebsite());
+        }
         if (userDto.getProfilePicture() != null) {
             user.setProfilePicture(userDto.getProfilePicture());
         }
@@ -135,17 +170,15 @@ public class AuthServiceImpl implements AuthService {
             user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         }
 
-        user.setRole(userDto.getRole());
+        if (userDto.getRole() != null) {
+            user.setRole(userDto.getRole());
+        }
 
         User updatedUser = userRepository.save(user);
 
         return UserMapper.toDTO(updatedUser);
     }
 }
-
-
-
-
 
 
 

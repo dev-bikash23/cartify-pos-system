@@ -90,8 +90,8 @@
   --popover-foreground: oklch(0.98 0 0);
 
   /* 🌿 GREEN ACCENT DARK */
-  --primary: oklch(24.324% 0.06986 144.061);
-  --primary-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.72 0.19 145);
+  --primary-foreground: oklch(0.16 0.02 145);
 
   --secondary: oklch(0.25 0 0);
   --secondary-foreground: oklch(0.98 0 0);
@@ -106,7 +106,7 @@
 
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(68.733% 0.21721 143.503);
+  --ring: oklch(0.78 0.18 145);
 
   /* sidebar */
   --sidebar: oklch(0.2 0 0);
@@ -118,21 +118,21 @@
 
 /* POS theme variants. These rules cover legacy utility-colored surfaces too. */
 html[data-theme="red"] {
-  --background: oklch(0.16 0.025 25);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.21 0.025 25);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.21 0.025 25);
-  --popover-foreground: oklch(0.98 0 0);
+  --background: oklch(0.99 0.005 25);
+  --foreground: oklch(0.2 0.03 25);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.03 25);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.03 25);
   --primary: oklch(0.58 0.22 25);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.26 0.025 25);
-  --secondary-foreground: oklch(0.98 0 0);
-  --accent: oklch(0.3 0.05 25);
-  --accent-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.96 0.02 25);
+  --secondary-foreground: oklch(0.25 0.04 25);
+  --accent: oklch(0.94 0.04 25);
+  --accent-foreground: oklch(0.25 0.04 25);
   --ring: oklch(0.7 0.2 25);
-  --border: oklch(1 0 0 / 14%);
-  --input: oklch(1 0 0 / 18%);
+  --border: oklch(0.88 0.02 25);
+  --input: oklch(0.88 0.02 25);
 }
 
 html[data-theme="red"] .bg-green-600,
@@ -230,8 +230,8 @@ html[data-theme="red"] th {
 }
 
 html[data-theme="red"] option {
-  background: #2c1717;
-  color: #fff;
+  background: #fff;
+  color: #351313;
 }
 
 html.dark select,
@@ -369,6 +369,95 @@ html.dark .border-slate-200 {
 
 html.dark .bg-green-50 {
   background-color: oklch(0.24 0.05 145) !important;
+}
+
+/* Keep legacy utility classes aligned with the selected application theme. */
+html.dark .bg-green-50,
+html[data-theme="red"] .bg-green-50 {
+  background-color: color-mix(in oklch, var(--card) 86%, var(--primary)) !important;
+}
+
+html.dark .bg-green-100,
+html[data-theme="red"] .bg-green-100,
+html.dark .bg-green-200,
+html[data-theme="red"] .bg-green-200 {
+  background-color: color-mix(in oklch, var(--card) 78%, var(--primary)) !important;
+}
+
+html.dark .bg-green-600,
+html.dark .bg-green-700,
+html[data-theme="red"] .bg-green-600,
+html[data-theme="red"] .bg-green-700 {
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+}
+
+html.dark .text-green-500,
+html.dark .text-green-600,
+html.dark .text-green-700,
+html.dark .text-green-800,
+html[data-theme="red"] .text-green-500,
+html[data-theme="red"] .text-green-600,
+html[data-theme="red"] .text-green-700,
+html[data-theme="red"] .text-green-800 {
+  color: var(--primary) !important;
+}
+
+html.dark .bg-slate-50,
+html.dark .bg-slate-100,
+html.dark .bg-slate-200,
+html.dark .bg-zinc-50,
+html.dark .bg-zinc-100,
+html[data-theme="red"] .bg-slate-50,
+html[data-theme="red"] .bg-slate-100,
+html[data-theme="red"] .bg-slate-200,
+html[data-theme="red"] .bg-zinc-50,
+html[data-theme="red"] .bg-zinc-100 {
+  background-color: var(--card) !important;
+  color: var(--card-foreground) !important;
+}
+
+html.dark .text-slate-900,
+html.dark .text-slate-800,
+html.dark .text-slate-700,
+html.dark .text-slate-600,
+html.dark .text-slate-500,
+html.dark .text-slate-400,
+html.dark .text-slate-300,
+html.dark .text-zinc-900,
+html.dark .text-zinc-800,
+html.dark .text-zinc-700,
+html.dark .text-zinc-600,
+html.dark .text-zinc-500,
+html[data-theme="red"] .text-slate-900,
+html[data-theme="red"] .text-slate-800,
+html[data-theme="red"] .text-slate-700,
+html[data-theme="red"] .text-slate-600,
+html[data-theme="red"] .text-slate-500,
+html[data-theme="red"] .text-slate-400,
+html[data-theme="red"] .text-slate-300,
+html[data-theme="red"] .text-zinc-900,
+html[data-theme="red"] .text-zinc-800,
+html[data-theme="red"] .text-zinc-700,
+html[data-theme="red"] .text-zinc-600,
+html[data-theme="red"] .text-zinc-500 {
+  color: var(--foreground) !important;
+}
+
+html.dark .border-slate-200,
+html.dark .border-slate-300,
+html.dark .border-zinc-200,
+html[data-theme="red"] .border-slate-200,
+html[data-theme="red"] .border-slate-300,
+html[data-theme="red"] .border-zinc-200 {
+  border-color: var(--border) !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder,
+html[data-theme="red"] input::placeholder,
+html[data-theme="red"] textarea::placeholder {
+  color: var(--muted-foreground);
 }
 
 /* ---------------- BASE STYLES ---------------- */

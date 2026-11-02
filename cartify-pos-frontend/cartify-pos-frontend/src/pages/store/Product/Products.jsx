@@ -54,6 +54,7 @@ const Products = () => {
 
   // ---------------- Add ----------------
   const handleAddProduct = async (values) => {
+    if (!store?.id) return;
     const result = await dispatch(createProduct({
       ...values,
       storeId: store.id,
@@ -115,10 +116,10 @@ const Products = () => {
   const filteredProducts = products.filter((item) => {
     const keyword = search.toLowerCase();
     return (
-      item.name.toLowerCase().includes(keyword) ||
-      item.brand.toLowerCase().includes(keyword) ||
+      item.name?.toLowerCase().includes(keyword) ||
+      item.brand?.toLowerCase().includes(keyword) ||
       (item.category?.name || "").toLowerCase().includes(keyword) ||
-      item.sku.toLowerCase().includes(keyword)
+      item.sku?.toLowerCase().includes(keyword)
     );
   });
 
@@ -165,7 +166,7 @@ const Products = () => {
 
               <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button className="bg-green-600 hover:bg-green-700">
+                  <Button className="bg-green-600 hover:bg-green-700" disabled={!store?.id}>
                     <Plus className="mr-2 h-4 w-4" />
                     Add Product
                   </Button>

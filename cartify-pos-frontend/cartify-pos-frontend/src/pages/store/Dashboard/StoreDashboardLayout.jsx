@@ -11,6 +11,7 @@ import { Truck } from "lucide-react";
 import { Tag } from "lucide-react";
 import { Store } from "lucide-react";
 import { LayoutDashboard } from "lucide-react";
+import { UserRound } from "lucide-react";
 
 import React from "react";
 import { Outlet } from "react-router-dom";
@@ -75,6 +76,11 @@ const navLinks = [
     name: "Settings",
     path: "/store/settings",
     icon: <Settings className="w-5 h-5" />,
+  },
+  {
+    name: "Profile",
+    path: "/store/profile",
+    icon: <UserRound className="w-5 h-5" />,
   },
 ]
 

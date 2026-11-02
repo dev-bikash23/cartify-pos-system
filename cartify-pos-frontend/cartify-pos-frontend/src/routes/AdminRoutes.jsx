@@ -7,6 +7,8 @@ import Subscriptions from '@/pages/superAdmin/Subscription/Subscriptions'
 import { Route, Routes } from 'react-router-dom'
 import React from 'react'
 import Exports from '@/pages/superAdmin/Exports'
+import Profile from '@/pages/superAdmin/Profile'
+import UserManagement from '@/pages/superAdmin/UserManagement'
 
 const AdminRoutes = () => {
   return (
@@ -21,6 +23,8 @@ const AdminRoutes = () => {
      <Route path="subscriptions" element={<Subscriptions />} />
      <Route path="exports" element={<Exports />} />
      <Route path="settings" element={<AdminSetting />} />
+     <Route path="profile" element={<Profile />} />
+     <Route path="users" element={<UserManagement />} />
 
 
      </Route>

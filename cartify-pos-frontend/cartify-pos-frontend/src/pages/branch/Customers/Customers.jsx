@@ -33,7 +33,6 @@ const Customers = () => {
       customer?.name,
       customer?.phone,
       customer?.email,
-      customer?.address,
     ].some((value) => String(value ?? "").toLowerCase().includes(term));
   });
 
@@ -74,14 +73,13 @@ const Customers = () => {
               <TableHead>Name</TableHead>
               <TableHead>Phone</TableHead>
               <TableHead>Email</TableHead>
-              <TableHead>Address</TableHead>
             </TableRow>
           </TableHeader>
 
           <TableBody>
             {!loading && !error && filteredCustomers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={4} className="py-8 text-center text-sm text-muted-foreground">
+                <TableCell colSpan={3} className="py-8 text-center text-sm text-muted-foreground">
                   No customers found.
                 </TableCell>
               </TableRow>
@@ -94,7 +92,6 @@ const Customers = () => {
                 </TableCell>
                 <TableCell>{customer.phone ?? "-"}</TableCell>
                 <TableCell>{customer.email ?? "-"}</TableCell>
-                <TableCell>{customer.address ?? "-"}</TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -12,6 +12,7 @@ import {
   UserCircle,
   FileText,
   Settings,
+  UserRound,
 } from "lucide-react";
 
 import { useSelector } from 'react-redux'
@@ -56,6 +57,11 @@ const navItems = [
     name: "Settings",
     path: "/branch/settings",
     icon: <Settings size={18} />,
+  },
+  {
+    name: "Profile",
+    path: "/branch/profile",
+    icon: <UserRound size={18} />,
   },
 ];
 

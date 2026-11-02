@@ -20,6 +20,7 @@ public class ProductMapper {
                 .categoryId(product.getCategory() != null ? product.getCategory().getId() : null)
                 .storeId(product.getStore() != null ? product.getStore().getId() : null)
                 .image(product.getImage())
+                .stock(product.getStock())
                 .createdAt(product.getCreatedAt())
                 .updatedAt(product.getUpdatedAt())
                 .build();
@@ -36,6 +37,8 @@ public class ProductMapper {
                 .sellingPrice(productDTO.getSellingPrice())
                 .brand(productDTO.getBrand())
                 .image(productDTO.getImage())
+                .stock(productDTO.getStock() == null ? 0 : productDTO.getStock())
+                .active(true)
                 .build();
     }
 }

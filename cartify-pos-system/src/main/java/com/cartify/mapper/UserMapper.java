@@ -18,6 +18,10 @@ public class UserMapper {
         userDto.setUpdatedAt(savedUser.getUpdatedAt());
         userDto.setLastLogin(savedUser.getLastLogin());
         userDto.setPhone(savedUser.getPhone());
+        userDto.setBusinessName(savedUser.getBusinessName());
+        userDto.setBusinessType(savedUser.getBusinessType());
+        userDto.setBusinessAddress(savedUser.getBusinessAddress());
+        userDto.setBusinessWebsite(savedUser.getBusinessWebsite());
         userDto.setProfilePicture(savedUser.getProfilePicture());
         userDto.setBranchId(savedUser.getBranch()!=null? savedUser.getBranch().getId():null);
         userDto.setStoreId(savedUser.getStore()!=null? savedUser.getStore().getId():null);
@@ -36,6 +40,10 @@ public class UserMapper {
         createdUser.setUpdatedAt(userDto.getUpdatedAt());
         createdUser.setLastLogin(userDto.getLastLogin());
         createdUser.setPhone(userDto.getPhone());
+        createdUser.setBusinessName(userDto.getBusinessName());
+        createdUser.setBusinessType(userDto.getBusinessType());
+        createdUser.setBusinessAddress(userDto.getBusinessAddress());
+        createdUser.setBusinessWebsite(userDto.getBusinessWebsite());
         createdUser.setProfilePicture(userDto.getProfilePicture());
         createdUser.setPassword(userDto.getPassword());
 

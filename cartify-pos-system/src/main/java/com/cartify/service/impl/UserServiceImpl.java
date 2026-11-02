@@ -3,6 +3,7 @@ package com.cartify.service.impl;
 import com.cartify.configuration.JwtProvider;
 import com.cartify.exception.UserException;
 import com.cartify.modal.User;
+import com.cartify.domain.UserRole;
 import com.cartify.repository.UserRepository;
 import com.cartify.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -77,5 +78,31 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUsers() {
         return userRepository.findByActiveTrue();
+    }
+
+    @Override
+    public List<User> getAllUsersIncludingInactive() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public User updateUserStatus(Long id, boolean active) throws UserException {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserException("User not found"));
+        user.setActive(active);
+        return userRepository.save(user);
+    }
+
+    @Override
+    @Transactional
+    public User updateUserRole(Long id, UserRole role) throws UserException {
+        if (role == null) {
+            throw new UserException("Role is required");
+        }
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserException("User not found"));
+        user.setRole(role);
+        return userRepository.save(user);
     }
 }
