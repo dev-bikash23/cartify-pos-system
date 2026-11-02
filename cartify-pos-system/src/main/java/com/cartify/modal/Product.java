@@ -24,6 +24,7 @@ public class Product {
     @Column(nullable = false, unique = true)
     private String sku;
 
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     private Double mrp;
@@ -34,7 +35,12 @@ public class Product {
 
     private String image;
 
+    @Column(nullable = false, columnDefinition = "int default 0")
+    @Builder.Default
+    private Integer stock = 0;
+
     @Column(nullable = false, columnDefinition = "boolean default true")
+    @Builder.Default
     private boolean active = true;
 
    // private Category category;
