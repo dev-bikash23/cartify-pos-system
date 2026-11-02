@@ -466,12 +466,22 @@ html[data-theme="red"] textarea::placeholder {
     @apply border-border outline-ring/50;
   }
 
+  html {
+    font-size: 80%;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
 
   html {
     @apply font-sans;
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 100%;
   }
 }
 
