@@ -1,5 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getAllCashier, getAllCustomer, getUserById, getUserProfile, logout } from "./userThunk";
+import {
+  getAllCashier,
+  getAllCustomer,
+  getUserById,
+  getUserProfile,
+  logout,
+  updateUserProfile,
+  getAdminUsers,
+  updateAdminUserStatus,
+  updateAdminUserRole,
+} from "./userThunk";
 
 
 const initialState={
@@ -7,8 +17,10 @@ const initialState={
   users:[],
   customers:[],
   cashiers:[],
+  adminUsers: [],
   selectedUser:null,
   loading:false,
+  profileLoading:false,
   error:null,
 
 }
@@ -31,17 +43,17 @@ const userSlice=createSlice({
 
   extraReducers: (builder)=>{
     builder.addCase(getUserProfile.pending, (state)=>{
-      state.loading=true,
+      state.profileLoading=true,
       state.error=null,
       state.userProfile=null;
     })
     .addCase(getUserProfile.fulfilled, (state, action)=>{
-      state.loading=false,
+      state.profileLoading=false,
       state.error=null,
       state.userProfile=action.payload;
     })
     .addCase(getUserProfile.rejected, (state, action)=>{
-      state.loading=false,
+      state.profileLoading=false,
       state.error=action.payload;
     })
     .addCase(getAllCustomer.fulfilled, (state, action)=>{
@@ -54,6 +66,36 @@ const userSlice=createSlice({
 
      .addCase(getUserById.fulfilled, (state, action)=>{
       state.selectedUser=action.payload;
+    })
+     .addCase(updateUserProfile.pending, (state)=>{
+      state.loading=true;
+      state.error=null;
+    })
+     .addCase(updateUserProfile.fulfilled, (state, action)=>{
+      state.loading=false;
+      state.userProfile=action.payload;
+    })
+     .addCase(updateUserProfile.rejected, (state, action)=>{
+      state.loading=false;
+      state.error=action.payload;
+    })
+     .addCase(getAdminUsers.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    })
+     .addCase(getAdminUsers.fulfilled, (state, action) => {
+      state.loading = false;
+      state.adminUsers = action.payload;
+    })
+     .addCase(getAdminUsers.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    })
+     .addCase(updateAdminUserStatus.fulfilled, (state, action) => {
+      state.adminUsers = state.adminUsers.map((user) => user.id === action.payload.id ? action.payload : user);
+    })
+     .addCase(updateAdminUserRole.fulfilled, (state, action) => {
+      state.adminUsers = state.adminUsers.map((user) => user.id === action.payload.id ? action.payload : user);
     })
      .addCase(logout.fulfilled, (state, action)=>{
       state.userProfile = null;
