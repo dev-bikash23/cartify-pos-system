@@ -1,0 +1,98 @@
+import "./App.css";
+import { Navigate, Route, Routes } from "react-router-dom";
+import CashierRoutes from "./routes/CashierRoutes";
+import BranchLayout from "./pages/branch/BranchLayout/BranchLayout";
+import BranchRoutes from "./routes/BranchRoutes";
+import StoreDashboardLayout from "./pages/store/Dashboard/StoreDashboardLayout";
+import StoreRoutes from "./routes/StoreRoutes";
+import AdminLayout from "./pages/superAdmin/AdminLayout";
+import AdminRoutes from "./routes/AdminRoutes";
+import Login from "./pages/Auth/Login";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getUserProfile } from "./Redux Toolkit/features/User/userThunk";
+import { useSelector } from "react-redux";
+
+function App() {
+   const dispatch = useDispatch();
+   const { userProfile, loading } = useSelector((state) => state.user);
+
+   useEffect(() => {
+    const applyTheme = (theme) => {
+      const selectedTheme = theme || "light";
+      document.documentElement.classList.toggle("dark", selectedTheme === "dark");
+      document.documentElement.dataset.theme = selectedTheme;
+    };
+
+    try {
+      const savedSettings = JSON.parse(localStorage.getItem("cartify-store-settings") || "null");
+      applyTheme(savedSettings?.theme || "light");
+    } catch {
+      applyTheme("light");
+    }
+
+    const handleSettingsUpdate = (event) => {
+      applyTheme(event.detail?.theme || "light");
+    };
+
+    window.addEventListener("cartify-settings-updated", handleSettingsUpdate);
+    return () => window.removeEventListener("cartify-settings-updated", handleSettingsUpdate);
+   }, []);
+
+   useEffect(() => {
+    const token = localStorage.getItem("jwt");
+
+    if (token) {
+      dispatch(getUserProfile(token));
+    }
+  }, [dispatch]);
+
+  if (loading) {
+    return null;
+  }
+
+  let content;
+
+  if (userProfile?.role === "ROLE_BRANCH_CASHIER") {
+     content = <Routes>
+      <Route path="/*" element={<Navigate to="/cashier" />} />
+      <Route path="/cashier/*" element={<CashierRoutes />} />
+    </Routes>
+  } else if (userProfile?.role === "ROLE_BRANCH_MANAGER" || userProfile?.role === "ROLE_BRANCH_ADMIN") {
+    content = <Routes>
+      <Route path="/*" element={<Navigate to="/branch" />} />
+      <Route path="/branch/*" element={<BranchRoutes />} />
+    </Routes>
+  } else if (userProfile?.role === "ROLE_STORE_MANAGER" || userProfile?.role === "ROLE_STORE_ADMIN") {
+    content = <Routes>
+      <Route path="/*" element={<Navigate to="/store" />} />
+      <Route path="/store/*" element={<StoreRoutes />} />
+    </Routes>
+  } else if (userProfile?.role === "ROLE_ADMIN") {
+    content = <Routes>
+      <Route path="/*" element={<Navigate to="/super-admin" />} />
+      <Route path="/super-admin/*" element={<AdminRoutes />} />
+    </Routes>
+  } else {
+    content = <Routes>
+      <Route path="*" element={<Login />} />
+    </Routes>
+  }
+  return (
+    <>
+    {/* // <Routes>
+    //   <Route path="/" element={<Navigate to="/login" replace />} />
+
+    //   <Route path="/login" element={<Login />} />
+
+    //   <Route path="/cashier/*" element={<CashierRoutes />} />
+    //   <Route path="/branch/*" element={<BranchRoutes />} />
+    //   <Route path="/store/*" element={<StoreRoutes />} />
+    //   <Route path="/super-admin/*" element={<AdminRoutes />} />
+    // </Routes> */}
+    {content}
+    </>
+  );
+}
+
+export default App;
