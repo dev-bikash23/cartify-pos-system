@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { X, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useDispatch, useSelector } from "react-redux";
-import { getBranchById } from "@/Redux Toolkit/features/Branch/branchThunk";
 import { logout } from "@/Redux Toolkit/features/User/userThunk";
+import AddProductDialog from "@/pages/cashier/AddProductDialog";
+import AddCategoryDialog from "@/pages/cashier/AddCategoryDialog";
 
 // const dummyBranch = {
 //   name: "Bhubaneswar East Branch",
@@ -14,17 +15,10 @@ import { logout } from "@/Redux Toolkit/features/User/userThunk";
 const Sidebar = ({ navItems, onClose, branch }) => {
   const dispatch = useDispatch();
 
-  const { userProfile } = useSelector((state) => state.user);
   const { branch: fetchedBranch } = useSelector((state) => state.branch);
   const navigate=useNavigate();
 
   const displayBranch = branch || fetchedBranch;
-
-  useEffect(() => {
-    if (userProfile?.branchId) {
-      dispatch(getBranchById({ id: userProfile.branchId }));
-    }
-  }, [userProfile, dispatch]);
 
   const handleLogout=()=>{
     dispatch(logout()).then(() => navigate("/"));
@@ -52,22 +46,30 @@ const Sidebar = ({ navItems, onClose, branch }) => {
       {/* Navigation */}
       <div className="flex-1 p-4 space-y-2">
         {navItems.map((item) => (
-          <NavLink
-            key={item.path}
-            to={item.path}
-            end={item.path === "/cashier"}
-            onClick={onClose}
-            className={({ isActive }) =>
-              `flex items-center gap-3 rounded-lg px-4 py-3 transition-all ${
-                isActive
-                  ? "bg-green-600 text-white shadow"
-                  : "text-gray-700 hover:bg-gray-100"
-              }`
-            }
-          >
-            {item.icon}
-            <span className="font-medium">{item.label}</span>
-          </NavLink>
+          item.action ? (
+            item.action === "category" ? (
+              <AddCategoryDialog key={item.label} branch={displayBranch} />
+            ) : (
+              <AddProductDialog key={item.label} branch={displayBranch} />
+            )
+          ) : (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.path === "/cashier"}
+              onClick={onClose}
+              className={({ isActive }) =>
+                `flex items-center gap-3 rounded-lg px-4 py-3 transition-all ${
+                  isActive
+                    ? "bg-green-600 text-white shadow"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`
+              }
+            >
+              {item.icon}
+              <span className="font-medium">{item.label}</span>
+            </NavLink>
+          )
         ))}
       </div>
 

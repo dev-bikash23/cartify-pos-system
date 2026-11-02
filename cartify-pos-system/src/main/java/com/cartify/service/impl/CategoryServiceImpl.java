@@ -83,11 +83,15 @@ public class CategoryServiceImpl implements CategoryService {
         boolean isStoreAdmin = user.getRole().equals(UserRole.ROLE_STORE_ADMIN);
         boolean isStoreManager = user.getRole().equals(UserRole.ROLE_STORE_MANAGER);
         boolean isOwnerOfThisStore = user.equals(store.getStoreAdmin());
+        boolean isCashierAtThisStore = user.getBranch() != null
+                && user.getBranch().getStore() != null
+                && user.getBranch().getStore().getId().equals(store.getId());
 
         boolean isAuthorized =
                 isSuperAdmin
                         || isStoreManager
-                        || (isStoreAdmin && isOwnerOfThisStore);
+                        || (isStoreAdmin && isOwnerOfThisStore)
+                        || isCashierAtThisStore;
 
         if (!isAuthorized) {
             throw new Exception("you don't have permission to manage this category");
@@ -95,8 +99,6 @@ public class CategoryServiceImpl implements CategoryService {
     }
      //  Pablo => Cashier
 }
-
-
 
 
 

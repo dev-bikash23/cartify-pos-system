@@ -33,11 +33,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDTO createProduct(ProductDTO productDTO, User user) throws Exception {
-        Store store = storeRepository.findById(
-                productDTO.getStoreId()
-        ).orElseThrow(
-                () -> new Exception("Store not found")
-        );
+        Store store = user.getStore();
+        if (store == null && user.getBranch() != null) {
+            store = user.getBranch().getStore();
+        }
+        if (store == null && user.getId() != null) {
+            store = storeRepository.findByStoreAdminId(user.getId());
+        }
+        if (store == null) {
+            throw new Exception("No store is associated with this account");
+        }
         Category category = categoryRepository.findById(productDTO.getCategoryId())
                 .orElseThrow(
                         () -> new Exception("category not found")
@@ -72,6 +77,7 @@ public class ProductServiceImpl implements ProductService {
         product.setMrp(productDTO.getMrp());
         product.setSellingPrice(productDTO.getSellingPrice());
         product.setBrand(productDTO.getBrand());
+        product.setStock(productDTO.getStock() == null ? 0 : productDTO.getStock());
         product.setUpdatedAt(LocalDateTime.now());
 
         if(productDTO.getCategoryId()!=null) {
@@ -110,8 +116,12 @@ public class ProductServiceImpl implements ProductService {
 
         private ProductDTO toDTOWithStock(Product product) {
                 ProductDTO dto = ProductMapper.toDTO(product);
-                int stock = inventoryRepository.findByProduct_Store_Id(product.getStore().getId()).stream()
+                List<Inventory> inventories = inventoryRepository.findByProduct_Store_Id(product.getStore().getId()).stream()
                         .filter(inventory -> inventory.getProduct().getId().equals(product.getId()))
+                        .toList();
+                int stock = inventories.isEmpty()
+                        ? (product.getStock() == null ? 0 : product.getStock())
+                        : inventories.stream()
                                 .mapToInt(inventory -> inventory.getQuantity() == null ? 0 : inventory.getQuantity())
                                 .sum();
                 dto.setStock(stock);
@@ -131,9 +141,6 @@ public class ProductServiceImpl implements ProductService {
                 }
         }
 }
-
-
-
 
 
 
