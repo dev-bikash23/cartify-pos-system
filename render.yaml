@@ -5,7 +5,7 @@ services:
     rootDir: cartify-pos-system
     dockerfilePath: ./Dockerfile
     envVars:
-      - key: SERVER_PORT
+      - key: PORT
         value: "10000"
       - key: MYSQL_HOST
         sync: false

@@ -35,7 +35,12 @@ public class ShiftReport {
     @Transient
     private List<PaymentSummary> paymentSummaries;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(
+            name = "shift_report_selling_products",
+            joinColumns = @JoinColumn(name = "shift_report_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
     private List<Product> toSellingProducts;
 
     @OneToMany(cascade = CascadeType.ALL)
