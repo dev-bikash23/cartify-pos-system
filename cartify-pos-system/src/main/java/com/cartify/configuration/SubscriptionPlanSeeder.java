@@ -21,7 +21,8 @@ public class SubscriptionPlanSeeder implements CommandLineRunner {
         jdbcTemplate.execute("""
                 CREATE TABLE IF NOT EXISTS subscription_plan_extra_features (
                     plan_id BIGINT NOT NULL,
-                    feature VARCHAR(255),
+                    feature VARCHAR(255) NOT NULL,
+                    PRIMARY KEY (plan_id, feature),
                     CONSTRAINT fk_subscription_plan_extra_features_plan
                         FOREIGN KEY (plan_id) REFERENCES subscription_plans(id)
                 )
