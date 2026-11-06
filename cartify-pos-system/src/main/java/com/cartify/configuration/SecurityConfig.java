@@ -14,13 +14,15 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 @Configuration
 public class SecurityConfig {
 
-    @Value("${app.cors.allowed-origins}")
+    @Value("${app.cors.allowed-origins:http://localhost:5173,http://localhost:5174,http://localhost:3000,https://cartify-pos-system.vercel.app}")
     private String allowedOrigins;
 
     @Bean
@@ -60,21 +62,28 @@ public class SecurityConfig {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration cfg = new CorsConfiguration();
-                cfg.setAllowedOrigins(
+                
+                List<String> origins = new ArrayList<>(
                         Arrays.stream(allowedOrigins.split(","))
                                 .map(String::trim)
                                 .filter(origin -> !origin.isEmpty())
                                 .toList()
                 );
-                cfg.setAllowedMethods(Collections.singletonList("*"));
+
+                // Always ensure production Vercel frontend is allowed
+                if (!origins.contains("https://cartify-pos-system.vercel.app")) {
+                    origins.add("https://cartify-pos-system.vercel.app");
+                }
+
+                cfg.setAllowedOrigins(origins);
+                cfg.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
                 cfg.setAllowCredentials(true);
-                cfg.setAllowedHeaders(Collections.singletonList("*"));
+                cfg.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept", "X-Requested-With", "Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers"));
                 cfg.setExposedHeaders(Arrays.asList("Authorization"));
                 cfg.setMaxAge(3600L);
                 return cfg;
             }
         };
     }
-
 
 }
