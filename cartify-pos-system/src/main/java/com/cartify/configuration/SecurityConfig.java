@@ -32,9 +32,15 @@ public class SecurityConfig {
                         management -> management.sessionCreationPolicy
                                 (SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(Authorize ->
-                        Authorize.requestMatchers("/api/**").authenticated()
-                                .requestMatchers("/api/super_admin/**")
-                                .hasRole("ADMIN")
+                        Authorize
+                                // specific rules FIRST (most restrictive -> least restrictive)
+                                .requestMatchers("/api/super-admin/**").hasAuthority("ROLE_ADMIN")
+                                .requestMatchers("/api/**").authenticated()
+                                // auth endpoints: login/signup are public
+                                .requestMatchers("/auth/login", "/auth/signup").permitAll()
+                                // protect auth update and user list (require authentication)
+                                .requestMatchers("/auth/update/**").authenticated()
+                                .requestMatchers("/users/list").authenticated()
                                 .anyRequest().permitAll()
                 ).addFilterBefore(new JwtValidator(), BasicAuthenticationFilter.class)
                 .csrf(AbstractHttpConfigurer::disable)
@@ -71,10 +77,4 @@ public class SecurityConfig {
     }
 
 
-
-
 }
-
-
-
-
