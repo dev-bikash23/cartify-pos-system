@@ -160,7 +160,7 @@ const ProductSection = () => {
         )}
       </div>
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3 p-5 overflow-y-auto">
+      <div className="flex-1 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3 p-4 overflow-y-auto auto-rows-min content-start">
         {error ? (
           <p className="col-span-full p-4 text-sm text-destructive">
             Unable to load products: {error}

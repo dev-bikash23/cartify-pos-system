@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/Redux Toolkit/features/User/userThunk";
 import AddProductDialog from "@/pages/cashier/AddProductDialog";
 import AddCategoryDialog from "@/pages/cashier/AddCategoryDialog";
+import BulkProductImportDialog from "@/pages/cashier/BulkProductImportDialog";
 
 // const dummyBranch = {
 //   name: "Bhubaneswar East Branch",
@@ -49,6 +50,8 @@ const Sidebar = ({ navItems, onClose, branch }) => {
           item.action ? (
             item.action === "category" ? (
               <AddCategoryDialog key={item.label} branch={displayBranch} />
+            ) : item.action === "bulk-import" ? (
+              <BulkProductImportDialog key={item.label} branch={displayBranch} />
             ) : (
               <AddProductDialog key={item.label} branch={displayBranch} />
             )

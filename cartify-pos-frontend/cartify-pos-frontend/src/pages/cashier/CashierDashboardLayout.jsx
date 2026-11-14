@@ -10,6 +10,7 @@ import {
   Plus,
   FolderPlus,
   Package,
+  Upload,
 } from "lucide-react";
 import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +22,7 @@ const navLinks = [
   { path: "/cashier", icon: <ShoppingCart size={20} />, label: "POS Terminal" },
   { action: true, icon: <Plus size={20} />, label: "Add Product" },
   { action: "category", icon: <FolderPlus size={20} />, label: "Add Category" },
+  { action: "bulk-import", icon: <Upload size={20} />, label: "Bulk Import (CSV)" },
   { path: "/cashier/inventory", icon: <Package size={20} />, label: "Inventory" },
   { path: "/cashier/orders", icon: <Clock size={20} />, label: "Orders History" },
   { path: "/cashier/customers", icon: <Users size={20} />, label: "Customers" },
