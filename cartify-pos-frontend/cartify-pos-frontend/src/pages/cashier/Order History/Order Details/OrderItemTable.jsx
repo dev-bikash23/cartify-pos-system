@@ -17,15 +17,15 @@ const OrderItemTable = ({ selectedOrder }) => {
       <CardContent className="p-4 sm:p-5">
         <h2 className="mb-3 text-base font-semibold">Order Items</h2>
 
-        <div className="overflow-hidden rounded-lg border bg-white">
-          <Table className="w-full min-w-0">
+        <div className="overflow-x-auto rounded-lg border bg-white">
+          <Table className="w-full">
             <TableHeader className="bg-slate-100/80">
               <TableRow>
-                <TableHead className="py-4">Image</TableHead>
-                <TableHead className="py-4">Item</TableHead>
-                <TableHead className="text-center py-4">Quantity</TableHead>
-                <TableHead className="text-right py-4">Price</TableHead>
-                <TableHead className="text-right py-4">Total</TableHead>
+                <TableHead className="py-4 min-w-[60px]">Image</TableHead>
+                <TableHead className="py-4 min-w-[150px]">Item</TableHead>
+                <TableHead className="text-center py-4 min-w-[80px]">Quantity</TableHead>
+                <TableHead className="text-right py-4 min-w-[80px]">Price</TableHead>
+                <TableHead className="text-right py-4 min-w-[90px]">Total</TableHead>
               </TableRow>
             </TableHeader>
 

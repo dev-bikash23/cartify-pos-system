@@ -19,12 +19,12 @@ const CartSummary = () => {
     <div className="p-4 border-t space-y-2">
       <div className="flex justify-between text-sm text-muted-foreground">
         <span>Subtotal</span>
-        <span>${subtotal.toFixed(2)}</span>
+        <span>₹{subtotal.toFixed(2)}</span>
       </div>
 
       <div className="flex justify-between text-sm text-muted-foreground">
         <span>Tax (18%)</span>
-        <span>${tax.toFixed(2)}</span>
+        <span>₹{tax.toFixed(2)}</span>
       </div>
 
       {discountAmount > 0 && (
@@ -33,13 +33,13 @@ const CartSummary = () => {
             Discount
             {discount.type === "percentage" ? ` (${discount.value}%)` : ""}
           </span>
-          <span>-${discountAmount.toFixed(2)}</span>
+          <span>-₹{discountAmount.toFixed(2)}</span>
         </div>
       )}
 
       <div className="flex justify-between text-base font-semibold pt-2 border-t">
         <span>Total</span>
-        <span className="text-green-600">${total.toFixed(2)}</span>
+        <span className="text-green-600">₹{total.toFixed(2)}</span>
       </div>
     </div>
   );

@@ -271,7 +271,7 @@ const OrderHistory = () => {
       </div>
 
       <Dialog open={showOrderInvoiceDialog} onOpenChange={setShowOrderInvoiceDialog}>
-        <DialogContent className="w-full gap-0 overflow-hidden p-0 sm:max-w-3xl! sm:rounded-2xl">
+        <DialogContent className="w-full gap-0 overflow-hidden p-0 sm:max-w-4xl sm:rounded-2xl max-h-[90vh]">
           <DialogHeader className="border-b bg-white px-5 py-4 sm:px-6">
             <DialogTitle className="text-xl font-bold sm:text-2xl">
               Order Invoice
@@ -281,7 +281,7 @@ const OrderHistory = () => {
             </p>
           </DialogHeader>
 
-          <div className="bg-slate-50/70">
+          <div className="bg-slate-50/70 overflow-y-auto">
             <OrderDetails selectedOrder={selectedOrder} />
           </div>
 

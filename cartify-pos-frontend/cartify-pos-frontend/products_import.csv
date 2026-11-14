@@ -1,0 +1,65 @@
+name,sku,sellingPrice,costPrice,categoryId,image,description
+Nike Air Max 90,SHOE001,12999,8500,1,https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop,Classic Nike Air Max 90 running shoes in red
+Adidas Ultraboost 22,SHOE002,15999,10500,1,https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=400&fit=crop,Adidas Ultraboost 22 premium running shoes
+Puma RS-X Bold,SHOE003,8999,5800,1,https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=400&h=400&fit=crop,Puma RS-X Bold retro sneakers multicolor
+Reebok Classic Leather,SHOE004,6999,4200,1,https://images.unsplash.com/photo-1539185441755-769473a23570?w=400&h=400&fit=crop,Reebok Classic Leather white sneakers
+New Balance 574,SHOE005,9499,6200,1,https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop,New Balance 574 casual lifestyle sneakers
+Converse Chuck Taylor,SHOE006,4999,2800,1,https://images.unsplash.com/photo-1607522370275-f14206abe5d3?w=400&h=400&fit=crop,Converse Chuck Taylor All Star high top black
+Vans Old Skool,SHOE007,5499,3200,1,https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&h=400&fit=crop,Vans Old Skool classic black and white skate shoes
+Nike Air Force 1,SHOE008,8999,5500,1,https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400&h=400&fit=crop,Nike Air Force 1 Low triple white sneakers
+Slim Fit Cotton T-Shirt,MCS001,999,450,2,https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop,Men's slim fit cotton crew neck t-shirt white
+Polo Ralph Lauren Shirt,MCS002,3499,2100,2,https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=400&h=400&fit=crop,Polo Ralph Lauren classic fit polo shirt navy
+Levi's 501 Original Jeans,MCS003,4999,3200,2,https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop,Levi's 501 Original fit button fly jeans indigo
+Casual Hoodie Pullover,MCS004,2499,1400,2,https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop,Men's casual pullover hoodie fleece grey
+Denim Jacket Classic,MCS005,3999,2400,2,https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=400&h=400&fit=crop,Men's classic denim jacket medium wash blue
+Chino Pants Khaki,MCS006,2299,1300,2,https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=400&fit=crop,Men's slim fit chino pants khaki stretch cotton
+V-Neck Sweater,MCS007,1999,1100,2,https://images.unsplash.com/photo-1614975059251-992f11792571?w=400&h=400&fit=crop,Men's V-neck knit sweater charcoal grey wool blend
+Cargo Shorts Olive,MCS008,1799,950,2,https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=400&fit=crop,Men's cargo shorts with multiple pockets olive green
+Floral Print Maxi Dress,WWR001,2999,1700,3,https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&h=400&fit=crop,Women's floral print maxi dress summer collection
+Crop Top Ribbed,WWR002,899,400,3,https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=400&h=400&fit=crop,Women's ribbed crop top casual fit black
+High Waist Skinny Jeans,WWR003,3499,2000,3,https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop,Women's high waist skinny jeans dark wash stretch
+Blazer Formal,WWR004,4999,3100,3,https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=400&h=400&fit=crop,Women's formal blazer single button black
+Pleated Midi Skirt,WWR005,1999,1050,3,https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&h=400&fit=crop,Women's pleated midi skirt elegant beige
+Off-Shoulder Blouse,WWR006,1499,750,3,https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=400&h=400&fit=crop,Women's off-shoulder ruffle blouse white cotton
+Palazzo Pants,WWR007,1799,900,3,https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&h=400&fit=crop,Women's wide leg palazzo pants navy blue flowy
+Leather Biker Jacket,WWR008,6999,4500,3,https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop,Women's faux leather biker jacket black zippered
+Oxford Formal Shoes,MFS001,5999,3800,4,https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=400&h=400&fit=crop,Men's Oxford leather formal shoes black lace-up
+Derby Brown Leather,MFS002,4999,3100,4,https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400&h=400&fit=crop,Men's Derby brown genuine leather shoes
+Monk Strap Shoes,MFS003,5499,3500,4,https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400&h=400&fit=crop,Men's double monk strap formal shoes tan
+Penny Loafers,MFS004,4499,2800,4,https://images.unsplash.com/photo-1582897085656-c636d006a246?w=400&h=400&fit=crop,Men's classic penny loafers burgundy leather
+Chelsea Boots,MFS005,6499,4200,4,https://images.unsplash.com/photo-1638247025967-b4e38f787b76?w=400&h=400&fit=crop,Men's Chelsea boots black suede elastic panel
+Women's Block Heels,WFS001,3499,2000,5,https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop,Women's block heel sandals nude strappy
+Women's Ballet Flats,WFS002,1999,1100,5,https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400&h=400&fit=crop,Women's pointed toe ballet flats black
+Women's Wedge Sandals,WFS003,2499,1400,5,https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400&h=400&fit=crop,Women's platform wedge sandals brown leather
+Women's Ankle Boots,WFS004,4999,3200,5,https://images.unsplash.com/photo-1605812860427-4024433a70fd?w=400&h=400&fit=crop,Women's ankle boots chunky heel black zipper
+Women's Sneakers White,WFS005,3999,2400,5,https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop,Women's casual white platform sneakers
+Sony WH-1000XM5,ELEC001,29999,22000,6,https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=400&h=400&fit=crop,Sony WH-1000XM5 wireless noise cancelling headphones
+Apple AirPods Pro,ELEC002,24999,19000,6,https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=400&h=400&fit=crop,Apple AirPods Pro 2nd gen with MagSafe case
+Samsung Galaxy Watch,ELEC003,19999,14500,6,https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&h=400&fit=crop,Samsung Galaxy Watch 5 44mm Bluetooth graphite
+JBL Flip 6 Speaker,ELEC004,9999,6800,6,https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop,JBL Flip 6 portable waterproof Bluetooth speaker
+USB-C Fast Charger 65W,ELEC005,1999,900,6,https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=400&h=400&fit=crop,65W USB-C PD fast charger GaN compact
+Wireless Mouse Logitech,ELEC006,1499,800,6,https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=400&fit=crop,Logitech M331 Silent Plus wireless mouse
+Power Bank 20000mAh,ELEC007,2499,1400,6,https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&h=400&fit=crop,20000mAh portable power bank dual USB output
+Laptop Sleeve 15 inch,ELEC008,1299,650,6,https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=400&fit=crop,15.6 inch laptop sleeve water resistant neoprene
+Leather Crossbody Bag,BAG001,3999,2400,7,https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop,Women's leather crossbody bag brown adjustable strap
+Canvas Tote Bag,BAG002,1499,700,7,https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&h=400&fit=crop,Canvas tote bag large capacity natural cotton
+Travel Backpack 40L,BAG003,4499,2800,7,https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop,40L travel backpack water resistant laptop compartment
+Leather Bifold Wallet,BAG004,1999,1100,7,https://images.unsplash.com/photo-1627123424574-724758594e93?w=400&h=400&fit=crop,Men's genuine leather bifold wallet RFID blocking brown
+Duffle Gym Bag,BAG005,2999,1700,7,https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop,Sports duffle gym bag with shoe compartment black
+Clutch Evening Bag,BAG006,2499,1300,7,https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop,Women's evening clutch bag gold chain strap
+Kids Dinosaur T-Shirt,KID001,699,350,8,https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=400&h=400&fit=crop,Kids dinosaur print cotton t-shirt green unisex
+Kids Denim Overalls,KID002,1499,800,8,https://images.unsplash.com/photo-1543854589-fdd4d3a0d181?w=400&h=400&fit=crop,Kids classic denim overalls adjustable straps
+Girls Party Frock,KID003,1999,1100,8,https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=400&h=400&fit=crop,Girls party frock pink sequin tulle princess dress
+Boys Track Suit,KID004,1799,950,8,https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=400&h=400&fit=crop,Boys tracksuit set jogger and hoodie navy blue
+Kids School Uniform Set,KID005,1299,700,8,https://images.unsplash.com/photo-1604671801908-6f0c6a092c05?w=400&h=400&fit=crop,Kids school uniform white shirt and grey pants set
+Ray-Ban Aviator Sunglasses,ACC001,8999,5500,9,https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop,Ray-Ban Aviator classic gold frame green lens
+Leather Belt Brown,ACC002,1499,750,9,https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=400&h=400&fit=crop,Men's genuine leather belt brown brass buckle
+Casio Digital Watch,ACC003,3999,2500,9,https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=400&fit=crop,Casio G-Shock digital watch black water resistant
+Wool Scarf Plaid,ACC004,999,500,9,https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400&h=400&fit=crop,Wool blend plaid scarf winter red check pattern
+Baseball Cap Nike,ACC005,1299,650,9,https://images.unsplash.com/photo-1588850561407-ed78c334e67a?w=400&h=400&fit=crop,Nike Dri-FIT baseball cap black adjustable
+Pearl Stud Earrings,ACC006,799,350,9,https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop,Freshwater pearl stud earrings sterling silver
+Sports Running Shorts,SPR001,1299,650,10,https://images.unsplash.com/photo-1562886877-aaaa5c17d1a8?w=400&h=400&fit=crop,Men's quick dry running shorts with zip pocket black
+Yoga Leggings High Waist,SPR002,1999,1050,10,https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&h=400&fit=crop,Women's high waist yoga leggings squat proof navy
+Gym Tank Top Muscle,SPR003,899,400,10,https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop,Men's gym muscle tank top sleeveless dri-fit grey
+Sports Bra Medium Support,SPR004,1499,750,10,https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=400&fit=crop,Women's medium support sports bra racerback black
+Track Jacket Windbreaker,SPR005,2999,1800,10,https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop,Unisex lightweight windbreaker track jacket navy
